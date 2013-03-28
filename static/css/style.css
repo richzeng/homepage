@@ -1,0 +1,102 @@
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+
+@font-face {
+	font-family: 'futura_condensed';
+	font-weight: normal;
+	src: local('futura_condensed'), url('../fonts/futura_condensed.ttf'), format('opentype');
+}
+
+body,html{
+	background-color: #111;
+	background-image: url('../img/assault.png');
+	background-repeat: repeat;
+}
+
+p {
+	color: white;
+}
+
+p.title  {
+	font-size: 42pt;
+	font-family: 'Merriweather Sans Bold', sans-serif;
+	text-align: center;
+	width: 400px;
+	height: 100px;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -200px;
+}
+
+.circle {
+	position: absolute;
+	width: 200px; 
+	height: 200px; 
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+
+	-moz-box-shadow: 3px 3px 10px #000;
+	-webkit-box-shadow: 3px 3px 10px #000;
+	box-shadow: 3px 3px 10px #000;
+}
+
+.circle p {
+	font-family: "Lucida Sans Unicode";
+	text-align: center;
+	padding-top: 40%;
+	font-size: 18pt;
+}
+
+.blue {
+	background-color: #007777;
+}
+.magenta {
+	background-color: #9F005A;
+}
+.green {
+	background-color: #7BB900;
+}
+.orange {
+	background-color: #C65A00;
+}
+
+.floating {
+  -webkit-animation-name: Floatingx;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: Floating;
+  -moz-animation-duration: 5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+.delay2 {
+	animation-delay: 2s;
+	-webkit-animation-delay:2s;
+	-moz-animation-delay:2s;
+}
+
+.delay3 {
+	animation-delay: 3s;
+	-webkit-animation-delay:3s;
+	-moz-animation-delay:3s;
+}
+
+@-webkit-keyframes Floatingx {
+  from { -webkit-transform:translate(0, 0px);}
+  65% {-webkit-transform:translate(0, 40px);}
+  to {-webkit-transform: translate(0, -0px);}    
+}
+    
+@-moz-keyframes Floating {
+  from {-moz-transform:translate(0, 0px);}
+  65% {-moz-transform:translate(0, 40px);}
+  to {-moz-transform: translate(0, -0px);}    
+}
+
+
