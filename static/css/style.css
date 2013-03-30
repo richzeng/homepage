@@ -11,10 +11,11 @@ body,html{
 	background-color: #111;
 	background-image: url('../img/assault.png');
 	background-repeat: repeat;
+	overflow: hidden;
 }
 
 p {
-	color: #DDD;
+	color: white;
 }
 
 p.title  {
@@ -29,8 +30,19 @@ p.title  {
 	font-family: 'Merriweather Sans Bold', sans-serif;
 	font-size:100px;
 	font-weight:normal;
+	opacity: 0.7;
 	margin-top: 650px;
 	text-shadow: 2px 2px 10px #000;
+}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+
+.preload * {
+  -webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	-o-transition: none;
 }
 
 .circle {
@@ -46,11 +58,20 @@ p.title  {
 	box-shadow: 3px 3px 10px #000;
 }
 
+.large {
+	width: 600px;
+	height: 600px;
+	-webkit-border-radius: 300px;
+}
+
 .circle p {
 	font-family: "Lucida Sans Unicode";
 	text-align: center;
-	padding-top: 40%;
 	font-size: 18pt;
+}
+
+p.center {
+	padding-top: 40%;
 }
 
 .blue {
@@ -73,34 +94,42 @@ p.title  {
 	transition:0.25s;
 	-webkit-transition:0.25s; /* Safari and Chrome */
   -webkit-animation-timing-function: ease-out;
+	-webkit-user-select: none;
 }
 .ul:hover {
-	-webkit-transform:translate(-40px, -40px);
+	-webkit-transform:translate(-40px, -40px) scale(1.2, 1.2);
+	cursor: pointer;
 }
 
 .ur {
 	transition:0.25s;
-	-webkit-transition:0.25s; /* Safari and Chrome */
+	-webkit-transition: 0.25s; /* Safari and Chrome */
   -webkit-animation-timing-function: ease-out;
+	-webkit-user-select: none;
 }
 .ur:hover {
-	-webkit-transform:translate(40px, -40px);
+	-webkit-transform:translate(40px, -40px) scale(1.2, 1.2);
+	cursor: pointer;
 }
 
 .bl {
 	transition:0.25s;
 	-webkit-transition:0.25s; /* Safari and Chrome */
   -webkit-animation-timing-function: ease-out;
+	-webkit-user-select: none;
 }
 .bl:hover {
-	-webkit-transform:translate(-40px, 40px);
+	-webkit-transform:translate(-40px, 40px) scale(1.2, 1.2);
+	cursor: pointer;
 }
 
 .br {
 	transition:0.25s;
 	-webkit-transition:0.25s; /* Safari and Chrome */
   -webkit-animation-timing-function: ease-out;
+	-webkit-user-select: none;
 }
 .br:hover {
-	-webkit-transform:translate(40px, 40px);
+	-webkit-transform:translate(40px, 40px) scale(1.2, 1.2);
+	cursor: pointer;
 }

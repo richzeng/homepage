@@ -1,9 +1,35 @@
 {%extends "base.html"%}
 
 {%block body%}
-<p class="title">RICHIE ZENG</p>
-<div class="circle blue ul" style="left:510px; top:140px"><p>about</p></div>
-<div class="circle magenta ur" style="right:510px; top:140px"><p>blog</p></div>
-<div class="circle green bl" style="left:510px; bottom:140px"><p>projects</p></div>
-<div class="circle orange br" style="right:510px; bottom:140px"><p>contact</p></div>
+<script>
+function flyAway(target) {
+	$(".ul").animate({
+		'-webkit-transition': '0s',
+		'left': '-200px',
+		'top': '-200px'
+	}, 500);
+	$(".ur").animate({
+		'-webkit-transition': '0s',
+		'right': '-200px',
+		'top': '-200px'
+	}, 500);
+	$(".bl").animate({
+		'-webkit-transition': '0s',
+		'left': '-200px',
+		'bottom': '-200px'
+	}, 500);
+	$(".br").animate({
+		'-webkit-transition': '0s',
+		'right': '-200px',
+		'bottom': '-200px'
+	}, 500, function() {
+		window.location = '/'+target;
+		});
+};
+</script>
+
+<div class="circle blue ul preload" style="left:510px; top:140px" onclick="flyAway('about')"><p class="center">about</p></div>
+<div class="circle orange ur preload" style="right:510px; top:140px" onclick="flyAway('home')"><p class="center">blog</p></div>
+<div class="circle green bl preload" style="left:510px; bottom:140px" onclick="flyAway('home')"><p class="center">projects</p></div>
+<div class="circle magenta br preload" style="right:510px; bottom:140px" onclick="flyAway('home')"><p class="center">contact</p></div>
 {%endblock%}
