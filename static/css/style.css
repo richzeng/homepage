@@ -14,6 +14,15 @@ body,html{
 	overflow: hidden;
 }
 
+div {
+	overflow: hidden;
+}
+
+div.hidden {
+	height: 0;
+	width: 0;
+}
+
 p {
 	color: white;
 }
@@ -85,9 +94,6 @@ p.center {
 }
 .orange {
 	background-color: #C65A00;
-}
-
-.floating {
 }
 
 .ul {
