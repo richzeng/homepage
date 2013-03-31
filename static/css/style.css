@@ -59,12 +59,8 @@ a:visited {text-decoration:none;}
 	width: 200px; 
 	height: 200px; 
 	-webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	border-radius: 100px;
 
-	-moz-box-shadow: 3px 3px 10px #000;
 	-webkit-box-shadow: 3px 3px 10px #000;
-	box-shadow: 3px 3px 10px #000;
 }
 
 .large {

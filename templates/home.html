@@ -28,10 +28,10 @@ function flyAway(target) {
 };
 </script>
 
-<div class="circle blue hidden" style="left:610px; top:240px" onclick="flyAway('about')"><p class="center">about</p></div>
-<div class="circle orange hidden" style="right:610px; top:240px" onclick="flyAway('home')"><p class="center">blog</p></div>
-<div class="circle green hidden" style="left:610px; bottom:240px" onclick="flyAway('home')"><p class="center">projects</p></div>
-<div class="circle magenta hidden" style="right:610px; bottom:240px" onclick="flyAway('home')"><p class="center">contact</p></div>
+<div class="circle blue hidden" onclick="flyAway('about')"><p class="center">about</p></div>
+<div class="circle orange hidden" onclick="flyAway('home')"><p class="center">blog</p></div>
+<div class="circle green hidden" onclick="flyAway('home')"><p class="center">projects</p></div>
+<div class="circle magenta hidden" onclick="flyAway('home')"><p class="center">contact</p></div>
 
 <script>
 	$(document).ready(function() {
@@ -39,8 +39,10 @@ function flyAway(target) {
 			$("div.blue").animate({
 				'height': '200px',
 				'width': '200px',
-				'left': '510px',
-				'top': '140px'
+				'left': '50%',
+				'top': '50%',
+				'margin-left': '-210px',
+				'margin-top': '-210px'
 				}, 400, function() {
 					$("div.blue").addClass("ul");
 				});
@@ -49,8 +51,10 @@ function flyAway(target) {
 			$("div.orange").animate({
 				'height': '200px',
 				'width': '200px',
-				'right': '510px',
-				'top': '140px'
+				'right': '50%',
+				'top': '50%',
+				'margin-right': '-210px',
+				'margin-top': '-210px'
 				}, 400, function() {
 					$("div.orange").addClass("ur");
 				});
@@ -59,8 +63,10 @@ function flyAway(target) {
 			$("div.green").animate({
 				'height': '200px',
 				'width': '200px',
-				'left': '510px',
-				'bottom': '140px'
+				'left': '50%',
+				'bottom': '50%',
+				'margin-left': '-210px',
+				'margin-bottom': '-210px'
 				}, 400, function() {
 					$("div.green").addClass("bl");
 				});
@@ -69,8 +75,10 @@ function flyAway(target) {
 			$("div.magenta").animate({
 				'height': '200px',
 				'width': '200px',
-				'right': '510px',
-				'bottom': '140px'
+				'right': '50%',
+				'bottom': '50%',
+				'margin-right': '-210px',
+				'margin-bottom': '-210px'
 				}, 400, function() {
 					$("div.magenta").addClass("br");
 				});

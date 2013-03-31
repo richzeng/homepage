@@ -1,8 +1,21 @@
 {%extends "base.html"%}
 
 {%block body%}
-<div class="circle blue large">
+<div class="circle blue large hidden" style="top:50%; left:50%;">
 	<p>about me</p>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit luctus leo eget viverra. Proin luctus orci at felis vestibulum ac auctor mi adipiscing. Pellentesque elementum imperdiet elit, sed facilisis turpis vestibulum in. In hac habitasse platea dictumst. Maecenas porttitor orci ac quam gravida adipiscing. Sed sit amet tortor nibh, sit amet viverra est. Ut elit neque, feugiat sit amet mollis ac, imperdiet ut mi. Proin vulputate, erat at tincidunt porta, lorem mi lobortis turpis, non faucibus lacus nisl sed turpis. Curabitur nec tellus ornare urna blandit porta ut eget nisi. Vivamus sit amet odio ut tortor tempus elementum ut.</p>
 </div>
+
+<script>
+loadCircle = function () {
+	$("div.large").animate({
+		'height': '600px',
+		'width': '600px',
+		'margin-left': '-300px',
+		'margin-top': '-300px'
+	}, 400, function() {
+		});
+};
+	loadCircle()
+</script>
 {%endblock%}
