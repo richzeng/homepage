@@ -2,6 +2,61 @@
 
 {%block body%}
 <script>
+$(document).ready(function() {
+	loadAbout = function () {
+		$("div.blue").animate({
+			'height': '200px',
+			'width': '200px',
+			'left': '50%',
+			'top': '50%',
+			'margin-left': '-210px',
+			'margin-top': '-210px'
+			}, 400, function() {
+				$("div.blue").addClass("ul");
+			});
+		}
+	loadBlog = function () {
+		$("div.orange").animate({
+			'height': '200px',
+			'width': '200px',
+			'right': '50%',
+			'top': '50%',
+			'margin-right': '-210px',
+			'margin-top': '-210px'
+			}, 400, function() {
+				$("div.orange").addClass("ur");
+			});
+		}
+	loadProjects= function () {
+		$("div.green").animate({
+			'height': '200px',
+			'width': '200px',
+			'left': '50%',
+			'bottom': '50%',
+			'margin-left': '-210px',
+			'margin-bottom': '-210px'
+			}, 400, function() {
+				$("div.green").addClass("bl");
+			});
+		}
+	loadContact = function () {
+		$("div.magenta").animate({
+			'height': '200px',
+			'width': '200px',
+			'right': '50%',
+			'bottom': '50%',
+			'margin-right': '-210px',
+			'margin-bottom': '-210px'
+			}, 400, function() {
+				$("div.magenta").addClass("br");
+			});
+		}
+		setTimeout(loadAbout, 100);
+		setTimeout(loadBlog, 200);
+		setTimeout(loadProjects, 300);
+		setTimeout(loadContact, 400);
+});
+
 function flyAway(target) {
 	$(".ul").css('-webkit-transition', '0s');
 	$(".ur").css('-webkit-transition', '0s');
@@ -9,97 +64,48 @@ function flyAway(target) {
 	$(".br").css('-webkit-transition', '0s');
 	flyAbout = function () {
 		$(".ul").animate({
+			'height': '0',
+			'width': '0',
 			'left': '-20%',
 			'top': '-20%'
-		}, 500);
+		}, 400);
 	};
 	flyBlog = function() {
 		$(".ur").animate({
+			'height': '0',
+			'width': '0',
 			'right': '-20%',
 			'top': '-20%'
-		}, 500);
+		}, 400);
 	}
 	flyProjects = function() {
 		$(".bl").animate({
+			'height': '0',
+			'width': '0',
 			'left': '-20%',
 			'bottom': '-20%'
-		}, 500);
+		}, 400);
 	}
 	flyContact = function() {
 		$(".br").animate({
+			'height': '0',
+			'width': '0',
 			'right': '-20%',
 			'bottom': '-20%'
-		}, 500, function() {
+		}, 400, function() {
 			window.location = '/'+target;
 			});
 	};
 
-	setTimeout(flyAbout, 200);
-	setTimeout(flyBlog, 400);
-	setTimeout(flyProjects, 600);
-	setTimeout(flyContact, 800);
+	setTimeout(flyAbout, 100);
+	setTimeout(flyBlog, 200);
+	setTimeout(flyProjects, 300);
+	setTimeout(flyContact, 400);
 };
 </script>
 
-<div class="circle blue hidden" onclick="flyAway('about')"><p class="center">about</p></div>
-<div class="circle orange hidden" onclick="flyAway('home')"><p class="center">blog</p></div>
-<div class="circle green hidden" onclick="flyAway('home')"><p class="center">projects</p></div>
-<div class="circle magenta hidden" onclick="flyAway('home')"><p class="center">contact</p></div>
-
-<script>
-	$(document).ready(function() {
-    loadAbout = function () {
-			$("div.blue").animate({
-				'height': '200px',
-				'width': '200px',
-				'left': '50%',
-				'top': '50%',
-				'margin-left': '-210px',
-				'margin-top': '-210px'
-				}, 400, function() {
-					$("div.blue").addClass("ul");
-				});
-			}
-    loadBlog = function () {
-			$("div.orange").animate({
-				'height': '200px',
-				'width': '200px',
-				'right': '50%',
-				'top': '50%',
-				'margin-right': '-210px',
-				'margin-top': '-210px'
-				}, 400, function() {
-					$("div.orange").addClass("ur");
-				});
-			}
-    loadProjects= function () {
-			$("div.green").animate({
-				'height': '200px',
-				'width': '200px',
-				'left': '50%',
-				'bottom': '50%',
-				'margin-left': '-210px',
-				'margin-bottom': '-210px'
-				}, 400, function() {
-					$("div.green").addClass("bl");
-				});
-			}
-    loadContact = function () {
-			$("div.magenta").animate({
-				'height': '200px',
-				'width': '200px',
-				'right': '50%',
-				'bottom': '50%',
-				'margin-right': '-210px',
-				'margin-bottom': '-210px'
-				}, 400, function() {
-					$("div.magenta").addClass("br");
-				});
-			}
-			setTimeout(loadAbout, 200);
-			setTimeout(loadBlog, 400);
-			setTimeout(loadProjects, 600);
-			setTimeout(loadContact, 800);
-	});
-</script>
+<div class="circle blue hidden" onclick="flyAway('about')"><h1 class="center">about</h1></div>
+<div class="circle orange hidden" onclick="flyAway('home')"><h1 class="center">blog</h1></div>
+<div class="circle green hidden" onclick="flyAway('home')"><h1 class="center">projects</h1></div>
+<div class="circle magenta hidden" onclick="flyAway('home')"><h1 class="center">contact</h1></div>
 {%endblock%}
