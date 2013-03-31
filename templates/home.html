@@ -3,28 +3,41 @@
 {%block body%}
 <script>
 function flyAway(target) {
-	$(".ul").animate({
-		'-webkit-transition': '0s',
-		'left': '-200px',
-		'top': '-200px'
-	}, 500);
-	$(".ur").animate({
-		'-webkit-transition': '0s',
-		'right': '-200px',
-		'top': '-200px'
-	}, 500);
-	$(".bl").animate({
-		'-webkit-transition': '0s',
-		'left': '-200px',
-		'bottom': '-200px'
-	}, 500);
-	$(".br").animate({
-		'-webkit-transition': '0s',
-		'right': '-200px',
-		'bottom': '-200px'
-	}, 500, function() {
-		window.location = '/'+target;
-		});
+	$(".ul").css('-webkit-transition', '0s');
+	$(".ur").css('-webkit-transition', '0s');
+	$(".bl").css('-webkit-transition', '0s');
+	$(".br").css('-webkit-transition', '0s');
+	flyAbout = function () {
+		$(".ul").animate({
+			'left': '-20%',
+			'top': '-20%'
+		}, 500);
+	};
+	flyBlog = function() {
+		$(".ur").animate({
+			'right': '-20%',
+			'top': '-20%'
+		}, 500);
+	}
+	flyProjects = function() {
+		$(".bl").animate({
+			'left': '-20%',
+			'bottom': '-20%'
+		}, 500);
+	}
+	flyContact = function() {
+		$(".br").animate({
+			'right': '-20%',
+			'bottom': '-20%'
+		}, 500, function() {
+			window.location = '/'+target;
+			});
+	};
+
+	setTimeout(flyAbout, 200);
+	setTimeout(flyBlog, 400);
+	setTimeout(flyProjects, 600);
+	setTimeout(flyContact, 800);
 };
 </script>
 
