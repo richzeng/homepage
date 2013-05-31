@@ -9,7 +9,7 @@ body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p
 
 body,html{
 	background-color: #111;
-	background-image: url('../img/assault.png');
+	background-image: url('../img/triangles.png');
 	background-repeat: repeat;
 	overflow: hidden;
 }
@@ -29,8 +29,6 @@ p {
 }
 
 p.title  {
-	border:0px solid red;
-	writing-mode:tb-rl;
 	-webkit-transform:rotate(-90deg);
 	white-space:nowrap;
 	display:block;
@@ -39,10 +37,23 @@ p.title  {
 	height:20px;
 	font-family: 'Merriweather Sans Bold', sans-serif;
 	font-size:100px;
-	font-weight:normal;
-	opacity: 0.7;
+	opacity: 0.2;
 	margin-top: 650px;
 	text-shadow: 2px 2px 10px #000;
+}
+
+
+p.title2 {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	position: absolute;
+	text-align: center;
+	height: 100px;
+	width: 300px;
+	top: 50%;
+	left: 50%;
+	opacity: 0.7;
+	margin-left: -150px;
+	margin-top: -290px;
 }
 
 h1 {
@@ -61,9 +72,9 @@ a:visited {text-decoration:none;}
 
 .circle {
 	position: absolute;
-	width: 200px; 
-	height: 200px; 
-	-webkit-border-radius: 100px;
+	width: 10%; 
+	height: 10%; 
+	-webkit-border-radius: 50%;
 	-webkit-box-shadow: 3px 3px 10px #000;
 }
 
@@ -81,7 +92,7 @@ a:visited {text-decoration:none;}
 
 .circle h1.center {
 	padding-top: 30%;
-	font: 32px 'DroidSansBold', Arial, sans-serif;
+	font: 28px 'DroidSansRegular', Arial, sans-serif;
 }
 
 .circle p {
