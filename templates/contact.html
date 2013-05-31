@@ -3,18 +3,68 @@
 {%block body%}
 <script>
 $(document).ready(function() {
-	loadCircle = function () {
-		$("div.magenta").animate({
-			'height': '200px',
-			'width': '200px',
-			'margin-left': '-100px',
-			'margin-top': '-100px'
-		}, 400);
-	}
-	loadCircle();
+	load1 = function () {
+		$("div#1").animate({
+			'height': '100px',
+			'width': '100px',
+			'margin-left': '-50px',
+			'margin-top': '-170px', //-50-120
+			}, 400);
+		}
+	load2 = function () {
+		$("div#2").animate({
+			'height': '100px',
+			'width': '100px',
+			'margin-left': '54px', //-50 + 104
+			'margin-top': '-110px', //-50 - 60
+			}, 400);
+		}
+	load3 = function () {
+		$("div#3").animate({
+			'height': '100px',
+			'width': '100px',
+			'margin-left': '56px', //-50 + 104
+			'margin-top': '10px', //-50 + 60
+			}, 400);
+		}
+	load4 = function () {
+		$("div#4").animate({
+			'height': '100px',
+			'width': '100px',
+			'margin-left': '-50px',
+			'margin-top': '70px', //-50 + 120
+			}, 400);
+		}
+	load5 = function () {
+		$("div#5").animate({
+			'height': '100px',
+			'width': '100px',
+			'margin-left': '-154px', //-50 - 104
+			'margin-top': '10px', //-50 + 60
+			}, 400);
+		}
+	load6 = function () {
+		$("div#6").animate({
+			'height': '100px',
+			'width': '100px',
+			'margin-left': '-154px', //-50 - 104
+			'margin-top': '-110px', //-50 - 60
+			}, 400);
+		}
+		load1()
+		setTimeout(load2, 100);
+		setTimeout(load3, 200);
+		setTimeout(load4, 300);
+		setTimeout(load5, 400);
+		setTimeout(load6, 500);
 });
 </script>
 
+<div class="circle image hidden" id="1" style="background-image:url('../static/img/social_media/facebook.png'); background-size: 100%; top:50%; left:50%;"></div>
+<div class="circle image hidden" id="2" style="background-image:url('../static/img/social_media/googleplus.png'); background-size: 100%; top:50%; left:50%;"></div>
+<div class="circle image hidden" id="3" style="background-image:url('../static/img/social_media/linkedin.png'); background-size: 100%; top:50%; left:50%;"></div>
+<div class="circle image hidden" id="4" style="background-image:url('../static/img/social_media/email.png'); background-size: 100%; top:50%; left:50%;"></div>
+<div class="circle image hidden" id="5" style="background-image:url('../static/img/social_media/twitter.png'); background-size: 100%; top:50%; left:50%;"></div>
+<div class="circle image hidden" id="6" style="background-image:url('../static/img/social_media/github.png'); background-size: 100%; top:50%; left:50%;"></div>
 
-<div class="circle magenta hidden" style="top:50%; left:50%;"><h1 class="center">contact</h1></div>
 {%endblock%}
