@@ -9,7 +9,9 @@ $(document).ready(function() {
 			'width': '100px',
 			'margin-left': '-50px',
 			'margin-top': '-170px', //-50-120
-			}, 400);
+			}, 200, function() {
+				$("div#1").addClass("enlarge");
+			});
 		}
 	load2 = function () {
 		$("div#2").animate({
@@ -17,7 +19,9 @@ $(document).ready(function() {
 			'width': '100px',
 			'margin-left': '54px', //-50 + 104
 			'margin-top': '-110px', //-50 - 60
-			}, 400);
+			}, 200, function() {
+				$("div#2").addClass("enlarge");
+			});
 		}
 	load3 = function () {
 		$("div#3").animate({
@@ -25,7 +29,9 @@ $(document).ready(function() {
 			'width': '100px',
 			'margin-left': '56px', //-50 + 104
 			'margin-top': '10px', //-50 + 60
-			}, 400);
+			}, 200, function() {
+				$("div#3").addClass("enlarge");
+			});
 		}
 	load4 = function () {
 		$("div#4").animate({
@@ -33,7 +39,9 @@ $(document).ready(function() {
 			'width': '100px',
 			'margin-left': '-50px',
 			'margin-top': '70px', //-50 + 120
-			}, 400);
+			}, 200, function() {
+				$("div#4").addClass("enlarge");
+			});
 		}
 	load5 = function () {
 		$("div#5").animate({
@@ -41,7 +49,9 @@ $(document).ready(function() {
 			'width': '100px',
 			'margin-left': '-154px', //-50 - 104
 			'margin-top': '10px', //-50 + 60
-			}, 400);
+			}, 200, function() {
+				$("div#5").addClass("enlarge");
+			});
 		}
 	load6 = function () {
 		$("div#6").animate({
@@ -49,7 +59,9 @@ $(document).ready(function() {
 			'width': '100px',
 			'margin-left': '-154px', //-50 - 104
 			'margin-top': '-110px', //-50 - 60
-			}, 400);
+			}, 200, function() {
+				$("div#6").addClass("enlarge");
+			});
 		}
 		load1()
 		setTimeout(load2, 100);
@@ -58,13 +70,35 @@ $(document).ready(function() {
 		setTimeout(load5, 400);
 		setTimeout(load6, 500);
 });
+
+function disappear(target) {
+	function dis(div) {
+		$(div).animate({
+			'height': '0',
+			'width': '0',
+			'margin-left': '0px',
+			'margin-top': '0px',
+		}, 100);
+	}
+	dis("div#1");
+	dis("div#2");
+	dis("div#3");
+	dis("div#4");
+	dis("div#5");
+	dis("div#6");
+	setTimeout(function() {
+		window.location = target
+	}, 500);
+
+}
+			
 </script>
 
-<div class="circle image hidden" id="1" style="background-image:url('../static/img/social_media/facebook.png'); background-size: 100%; top:50%; left:50%;"></div>
-<div class="circle image hidden" id="2" style="background-image:url('../static/img/social_media/googleplus.png'); background-size: 100%; top:50%; left:50%;"></div>
-<div class="circle image hidden" id="3" style="background-image:url('../static/img/social_media/linkedin.png'); background-size: 100%; top:50%; left:50%;"></div>
-<div class="circle image hidden" id="4" style="background-image:url('../static/img/social_media/email.png'); background-size: 100%; top:50%; left:50%;"></div>
-<div class="circle image hidden" id="5" style="background-image:url('../static/img/social_media/twitter.png'); background-size: 100%; top:50%; left:50%;"></div>
-<div class="circle image hidden" id="6" style="background-image:url('../static/img/social_media/github.png'); background-size: 100%; top:50%; left:50%;"></div>
+<div class="circle image hidden" id="1" style="background-image:url('../static/img/social_media/facebook.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://facebook.com/richzeng')"></div>
+<div class="circle image hidden" id="2" style="background-image:url('../static/img/social_media/googleplus.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://plus.google.com/105327081310360353311')"></div>
+<div class="circle image hidden" id="3" style="background-image:url('../static/img/social_media/linkedin.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://www.linkedin.com/in/richzeng/')"></div>
+<div class="circle image hidden" id="4" style="background-image:url('../static/img/social_media/email.png'); background-size: 100%; top:50%; left:50%;" onclick="window.location = 'mailto:richzeng@gmail.com'"></div>
+<div class="circle image hidden" id="5" style="background-image:url('../static/img/social_media/twitter.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://twitter.com/zengrichie')"></div>
+<div class="circle image hidden" id="6" style="background-image:url('../static/img/social_media/github.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://github.com/richzeng')"></div>
 
 {%endblock%}

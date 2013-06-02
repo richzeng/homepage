@@ -92,7 +92,7 @@ a:visited {text-decoration:none;}
 
 .circle h1.center {
 	padding-top: 30%;
-	font: 28px 'DroidSansRegular', Arial, sans-serif;
+	font: 28px 'DroidSansBold', Arial, sans-serif;
 }
 
 .circle p {
@@ -123,6 +123,18 @@ p strong {
 }
 .orange {
 	background-color: #C65A00;
+}
+
+.enlarge {
+	transition:0.25s;
+	-webkit-transition:0.25s; /* Safari and Chrome */
+  -webkit-animation-timing-function: ease-out;
+	-webkit-user-select: none;
+}
+
+.enlarge:hover {
+	-webkit-transform:scale(1.2, 1.2);
+	cursor: pointer;
 }
 
 .ul {
