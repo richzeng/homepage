@@ -1,0 +1,101 @@
+{%extends "base.html"%}
+
+{%block body%}
+<script>
+$(document).ready(function() {
+	active_id = 0
+	loadCenter(0);
+});
+
+$(document).keydown(function(e){
+	if (e.keyCode == 38) { 
+		shiftUp();
+	}
+	else if (e.keyCode == 40) {
+		shiftDown();
+	}
+});
+
+
+function animateProject(id) {
+	loadSurroundings = function () {
+		var xy = polarToXY(200, 0);
+		xy[0] = xy[0] - 100;
+		xy[1] = xy[1] - 100;
+		$("div.surround").animate({
+			'height': '200px',
+			'width': '200px',
+			'margin-left': xy[0] + 'px',
+			'margin-top': xy[1] + 'px'
+		}, 400);
+	}
+}
+
+function polarToXY(rad, deg) {
+	var radians = deg/180 * (Math.PI);
+	var x = rad * Math.cos(radians);
+	var y = rad * Math.sin(radians);
+	return [x, y]
+}
+
+function removeSurroundings () {
+	$("div.surround").animate({
+		'height': '0',
+		'width': '0',
+		'margin-left': '0',
+		'margin-top': '0'
+	}, 400);
+}
+
+function loadCenter(id) {
+	$("div#"+id).animate({
+		'height': '200px',
+		'width': '200px',
+		'top': '50%',
+		'left': '50%',
+		'margin-left': '-100px',
+		'margin-top': '-100px'
+		}, 400);
+}
+
+function shiftUp() {
+	if (active_id > 0) {
+		$("div#"+active_id).animate({
+			'height': '0',
+			'width': '0',
+			'top': '0%',
+			'left': '50%',
+			'margin-left': '0',
+			'margin-top': '0'
+		}, 400);
+		active_id -= 1
+		loadCenter(active_id);
+	}
+}
+
+function shiftDown() {
+	if (active_id < 7) {
+		$("div#"+active_id).animate({
+			'height': '0',
+			'width': '0',
+			'top': '100%',
+			'left': '50%',
+			'margin-left': '0',
+			'margin-top': '0'
+		}, 400);
+		active_id += 1
+		loadCenter(active_id);
+	}
+}
+</script>
+
+<div class="circle blue hidden surround" id="" style="top:50%; left:50%;"></div>
+<div class="circle blue hidden" id="0" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="1" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="2" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="3" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="4" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="5" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="6" style="top:0; left:50%;"></div>
+<div class="circle blue hidden" id="7" style="top:0; left:50%;"></div>
+{%endblock%}
