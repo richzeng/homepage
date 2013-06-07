@@ -2,9 +2,16 @@
 
 {%block body%}
 <script>
+function polarToXY(rad, deg) {
+	var radians = deg/180 * (Math.PI);
+	var x = rad * Math.cos(radians);
+	var y = rad * Math.sin(radians);
+	return [x, y]
+}
+
 $(document).ready(function() {
 	active_id = 0
-	loadCenter(0);
+    shiftDown(0);
 });
 
 $(document).keydown(function(e){
@@ -17,25 +24,16 @@ $(document).keydown(function(e){
 });
 
 
-function animateProject(id) {
-	loadSurroundings = function () {
-		var xy = polarToXY(200, 0);
-		xy[0] = xy[0] - 100;
-		xy[1] = xy[1] - 100;
-		$("div.surround").animate({
-			'height': '200px',
-			'width': '200px',
-			'margin-left': xy[0] + 'px',
-			'margin-top': xy[1] + 'px'
-		}, 400);
-	}
-}
-
-function polarToXY(rad, deg) {
-	var radians = deg/180 * (Math.PI);
-	var x = rad * Math.cos(radians);
-	var y = rad * Math.sin(radians);
-	return [x, y]
+function loadSurroundings () {
+    var xy = polarToXY(200, 0);
+    xy[0] = xy[0] - 50;
+    xy[1] = xy[1] - 50;
+    $("div#s0").animate({
+        'height': '100px',
+        'width': '100px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 400);
 }
 
 function removeSurroundings () {
@@ -60,36 +58,49 @@ function loadCenter(id) {
 
 function shiftUp() {
 	if (active_id > 0) {
-		$("div#"+active_id).animate({
-			'height': '0',
-			'width': '0',
-			'top': '0%',
-			'left': '50%',
-			'margin-left': '0',
-			'margin-top': '0'
-		}, 400);
-		active_id -= 1
-		loadCenter(active_id);
+        removeSurroundings();
+        setTimeout(function() {
+            $("div#"+active_id).animate({
+                'height': '0',
+                'width': '0',
+                'top': '0%',
+                'left': '50%',
+                'margin-left': '0',
+                'margin-top': '0'
+            }, 400);
+            active_id -= 1
+            loadCenter(active_id);
+            loadSurroundings();
+        }, 200);
 	}
 }
 
 function shiftDown() {
 	if (active_id < 7) {
-		$("div#"+active_id).animate({
-			'height': '0',
-			'width': '0',
-			'top': '100%',
-			'left': '50%',
-			'margin-left': '0',
-			'margin-top': '0'
-		}, 400);
-		active_id += 1
-		loadCenter(active_id);
+        removeSurroundings();
+        setTimeout(function() {
+            $("div#"+active_id).animate({
+                'height': '0',
+                'width': '0',
+                'top': '100%',
+                'left': '50%',
+                'margin-left': '0',
+                'margin-top': '0'
+                }, 400);
+            active_id += 1
+            loadCenter(active_id);
+            loadSurroundings();
+        }, 200);
 	}
 }
 </script>
 
-<div class="circle blue hidden surround" id="" style="top:50%; left:50%;"></div>
+<div class="circle magenta hidden surround" id="s0" style="top:50%; left:50%;"></div>
+<div class="circle green hidden surround" id="s1" style="top:50%; left:50%;"></div>
+<div class="circle orange hidden surround" id="s2" style="top:50%; left:50%;"></div>
+<div class="circle green hidden surround" id="s3" style="top:50%; left:50%;"></div>
+<div class="circle magenta hidden surround" id="s4" style="top:50%; left:50%;"></div>
+<div class="circle orange hidden surround" id="s5" style="top:50%; left:50%;"></div>
 <div class="circle blue hidden" id="0" style="top:0; left:50%;"></div>
 <div class="circle blue hidden" id="1" style="top:0; left:50%;"></div>
 <div class="circle blue hidden" id="2" style="top:0; left:50%;"></div>
