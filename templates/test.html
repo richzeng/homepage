@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+
+{%block body%}
+{%for project in projects%}
+<div style="float:right;">
+<h1>{{"a" + "B"}}</h1>
+<h1>{{project.name}}</h1>
+<h3>{{project.source}}</h3>
+<p>{{project.img_large}}</p>
+<p>{{project.link}}</p>
+<p>{{project.desc}}</p>
+</div>
+{%endfor%}
+
+{%endblock%}

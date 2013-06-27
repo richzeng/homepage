@@ -2,161 +2,171 @@
 
 {%block body%}
 <script>
-function polarToXY(rad, deg) {
-	var radians = deg/180 * (Math.PI);
-	var x = rad * Math.cos(radians);
-	var y = rad * Math.sin(radians);
-	return [x, y]
-}
-
-$(document).ready(function() {
+var isMoving = false;
+$(window).load(function() {
 	active_id = 0
-    shiftDown(0);
+    shiftDown(1);
 });
-
 $(document).keydown(function(e){
-	if (e.keyCode == 38) { 
-		shiftUp();
+	if (e.keyCode == 38 && !isMoving) { 
+		shiftUp(active_id-1);
 	}
-	else if (e.keyCode == 40) {
-		shiftDown();
+	else if (e.keyCode == 40 && !isMoving) {
+		shiftDown(active_id+1);
 	}
 });
 
-
-function loadSurroundings () {
-    var xy = polarToXY(200, 90);
-    xy[0] = xy[0] - 50;
-    xy[1] = xy[1] - 50;
-    $("div#s0").animate({
-        'height': '100px',
-        'width': '100px',
-        'margin-left': xy[0] + 'px',
-        'margin-top': xy[1] + 'px'
-    }, 300);
-
-    xy = polarToXY(200, 270);
-    xy[0] = xy[0] - 50;
-    xy[1] = xy[1] - 50;
-    $("div#s1").animate({
-        'height': '100px',
-        'width': '100px',
-        'margin-left': xy[0] + 'px',
-        'margin-top': xy[1] + 'px'
-    }, 300);
-
-    xy = polarToXY(300, 15);
-    xy[0] = xy[0] - 150;
-    xy[1] = xy[1] - 150;
-    $("div#s2").animate({
-        'height': '300px',
-        'width': '300px',
-        'margin-left': xy[0] + 'px',
-        'margin-top': xy[1] + 'px'
-    }, 300);
-
-    xy = polarToXY(350, 155);
-    xy[0] = xy[0] - 200;
-    xy[1] = xy[1] - 200;
-    $("div#s3").animate({
-        'height': '400px',
-        'width': '400px',
-        'margin-left': xy[0] + 'px',
-        'margin-top': xy[1] + 'px'
-    }, 300);
-
-    xy = polarToXY(200, 220);
-    xy[0] = xy[0] - 75;
-    xy[1] = xy[1] - 75;
-    $("div#s4").animate({
-        'height': '150px',
-        'width': '150px',
-        'margin-left': xy[0] + 'px',
-        'margin-top': xy[1] + 'px'
-    }, 300);
-
-    xy = polarToXY(300, 315);
-    xy[0] = xy[0] - 125;
-    xy[1] = xy[1] - 125;
-    $("div#s5").animate({
-        'height': '250px',
-        'width': '250px',
-        'margin-left': xy[0] + 'px',
-        'margin-top': xy[1] + 'px'
-    }, 300);
+function loadCircles(id) {
+    function appear(sel, size) {
+        $(sel).animate({
+            'height': size+'px',
+            'width': size+'px',
+            'margin-top': '0',
+            'margin-left': '0',
+            }, 200, function() {
+            $(sel).addClass("enlarge");
+        });
+    }
+    function appearNoEnlarge(sel, size) {
+        $(sel).animate({
+            'height': size+'px',
+            'width': size+'px',
+            'margin-top': '0',
+            'margin-left': '0',
+        }, 400);
+    }
+    setTimeout(function() {
+        appearNoEnlarge(".thumbnail#thumb-"+active_id+"-"+1, 190);
+    }, 400);
+    setTimeout(function() {
+        appearNoEnlarge(".thumbnail#thumb-"+active_id+"-"+2, 190);
+    }, 600);
+    setTimeout(function() {
+        appearNoEnlarge(".thumbnail#thumb-"+active_id+"-"+3, 190);
+    }, 800);
+    setTimeout(function() {
+        appear("#github-"+active_id, 50);
+    }, 600);
+    setTimeout(function() {
+        appear("#link-"+active_id, 50);
+    }, 700);
+    setTimeout(function() {
+        appear("#play-"+active_id, 50);
+    }, 800);
 }
 
-function removeSurroundings () {
-	$("div.surround").animate({
-		'height': '0',
-		'width': '0',
-		'margin-left': '0',
-		'margin-top': '0'
-	}, 200);
+function disappear() {
+    function dis(sel, size) {
+        margin = size/2;
+        $(sel).animate({
+            'height': '0px',
+            'width': '0px',
+            'margin-top': margin+'px',
+            'margin-left': margin+'px',
+        }, size);
+    }
+    dis("#github-"+active_id, 50);
+    dis("#link-"+active_id, 50);
+    dis("#play-"+active_id, 50);
+    dis(".thumbnail#thumb-"+active_id+"-"+1, 200);
+    dis(".thumbnail#thumb-"+active_id+"-"+2, 200);
+    dis(".thumbnail#thumb-"+active_id+"-"+3, 200);
 }
 
-function loadCenter(id) {
-	$("div#"+id).animate({
-		'height': '200px',
-		'width': '200px',
-		'top': '50%',
-		'left': '50%',
-		'margin-left': '-100px',
-		'margin-top': '-100px'
-		}, 300);
-}
-
-function shiftUp() {
-	if (active_id > 0) {
-        removeSurroundings();
+function shiftUp(id) {
+	if (id > 0) {
+        isMoving = true;
+        disappear();
+        $("h2#"+active_id+".nav").removeClass("selected");
+        $("h2#"+id+".nav").addClass("selected");
         setTimeout(function() {
-            $("div#"+active_id).animate({
-                'height': '0',
-                'width': '0',
-                'top': '0%',
-                'left': '50%',
-                'margin-left': '0',
-                'margin-top': '0'
-            }, 300);
-            active_id -= 1
-            loadCenter(active_id);
+            $('.slide-container').css({"-webkit-transform":"translate(0, "+(600*id)+"px)"});
+            isMoving = false;
+            active_id = id;
+            loadCircles(id);
         }, 200);
-        setTimeout(loadSurroundings, 400);
 	}
 }
 
-function shiftDown() {
-	if (active_id < 7) {
-        removeSurroundings();
+function shiftDown(id) {
+	if (id < 5) {
+        isMoving = true;
+        disappear();
+        $("div.sidebar #"+active_id+".nav").removeClass("selected");
+        $("div.sidebar #"+id+".nav").addClass("selected");
         setTimeout(function() {
-            $("div#"+active_id).animate({
-                'height': '0',
-                'width': '0',
-                'top': '100%',
-                'left': '50%',
-                'margin-left': '0',
-                'margin-top': '0'
-                }, 300);
-            active_id += 1
-            loadCenter(active_id);
+            $('.slide-container').css({"-webkit-transform":"translate(0, "+(600*id)+"px)"});
+            isMoving = false;
+            active_id = id;
+            loadCircles(id);
         }, 200);
-        setTimeout(loadSurroundings, 400);
 	}
+}
+
+function jumpTo(id) {
+    if (id < active_id) {
+        shiftDown(id);
+    } else if (id > active_id) {
+        shiftUp(id);
+    }
 }
 </script>
 
-<div class="circle green hidden surround" id="s0" style="top:50%; left:50%;"></div>
-<div class="circle green hidden surround" id="s1" style="top:50%; left:50%;"></div>
-<div class="circle orange hidden surround" id="s2" style="top:50%; left:50%;"></div>
-<div class="circle magenta hidden surround" id="s3" style="top:50%; left:50%;"></div>
-<div class="circle magenta hidden surround" id="s4" style="top:50%; left:50%;"></div>
-<div class="circle orange hidden surround" id="s5" style="top:50%; left:50%;"></div>
-<div class="circle blue hidden" id="0" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="1" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="2" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="3" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="4" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="5" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="6" style="top:0; left:50%;"></div>
-<div class="circle blue hidden" id="7" style="top:0; left:50%;"></div>
+<div class="container" style="height:100%; width:65%; float:right; padding:20px; overflow:hidden;">
+    <div class="slide-window" style="width:600px; height:600px; overflow:hidden;">
+        <div class="slide-container" style="width:600px; height:2400px; position:relative; margin-top:-2400px;">
+            {%for p in projects|reverse%}
+            {%set outer_loop = loop%}
+            <div class="slide" style="width:600px; height:600px; padding-top:5px">
+                <h1>{{p.name}}</h1>
+
+                {%if p.prize%}
+                    <h4>{{p.prize}}</h4>
+                {%endif%}
+
+                <div style="height:200px; margin-top:30px;">
+                    {%for img in p.images%}
+                    <div style="float:left; height:195px; width:195px; padding-right:5px;">
+                        {%set id = (5-outer_loop.index, loop.index)|join("-")%}
+                        <div class="hidden thumbnail" id="thumb-{{id}}" style="background-image:url('{{img}}'); margin-left:50%; margin-top:50%;"></div>
+                    </div>
+                    {%endfor%}
+                </div>
+
+                <div style="padding-bottom:10px;">
+                    <p>{{p.desc}}</p>
+                </div>
+
+                {%set id = 5-loop.index%}
+                {%if p.source%}
+                <div style="float:left; height:50px; width:50px; padding:10px;">
+                    <a class="circle hidden github" id="github-{{id}}" style="margin-left:50px; margin-top:50px;" href="{{p.source}}" target="_blank"></a>
+                </div>
+                {%endif%}
+
+                {%if p.link%}
+                <div style="float:left; height:50px; width:50px; padding:10px;">
+                    <a class="circle hidden link" id="link-{{id}}" style="margin-left:50px; margin-top:50px;" href="{{p.link}}" target="_blank"></a>
+                </div>
+                {%endif%}
+
+                {%if p.demo%}
+                <div style="float:left; height:50px; width:50px; padding:10px;">
+                    <a class="circle hidden play" id="play-{{id}}" style="margin-left:50px; margin-top:50px;" href="{{p.demo}}" target="_blank"></a>
+                </div>
+                {%endif%}
+
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+
+<div class="sidebar" style="height:100%; width:20%; float:right; padding-top:40px; padding-right:20px;">
+{% for p in projects%}
+    <h2 class="nav" id="{{loop.index}}" onclick="jumpTo({{loop.index}})" style="text-align:right;">{{p.name}}</h2>
+{%endfor%}
+</div>
+
+
 {%endblock%}

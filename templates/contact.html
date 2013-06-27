@@ -4,63 +4,63 @@
 <script>
 $(document).ready(function() {
 	load1 = function () {
-		$("div#1").animate({
+		$("a#1").animate({
 			'height': '100px',
 			'width': '100px',
 			'margin-left': '-50px',
 			'margin-top': '-170px', //-50-120
 			}, 200, function() {
-				$("div#1").addClass("enlarge");
+				$("a#1").addClass("enlarge");
 			});
 		}
 	load2 = function () {
-		$("div#2").animate({
+		$("a#2").animate({
 			'height': '100px',
 			'width': '100px',
 			'margin-left': '54px', //-50 + 104
 			'margin-top': '-110px', //-50 - 60
 			}, 200, function() {
-				$("div#2").addClass("enlarge");
+				$("a#2").addClass("enlarge");
 			});
 		}
 	load3 = function () {
-		$("div#3").animate({
+		$("a#3").animate({
 			'height': '100px',
 			'width': '100px',
 			'margin-left': '56px', //-50 + 104
 			'margin-top': '10px', //-50 + 60
 			}, 200, function() {
-				$("div#3").addClass("enlarge");
+				$("a#3").addClass("enlarge");
 			});
 		}
 	load4 = function () {
-		$("div#4").animate({
+		$("a#4").animate({
 			'height': '100px',
 			'width': '100px',
 			'margin-left': '-50px',
 			'margin-top': '70px', //-50 + 120
 			}, 200, function() {
-				$("div#4").addClass("enlarge");
+				$("a#4").addClass("enlarge");
 			});
 		}
 	load5 = function () {
-		$("div#5").animate({
+		$("a#5").animate({
 			'height': '100px',
 			'width': '100px',
 			'margin-left': '-154px', //-50 - 104
 			'margin-top': '10px', //-50 + 60
 			}, 200, function() {
-				$("div#5").addClass("enlarge");
+				$("a#5").addClass("enlarge");
 			});
 		}
 	load6 = function () {
-		$("div#6").animate({
+		$("a#6").animate({
 			'height': '100px',
 			'width': '100px',
 			'margin-left': '-154px', //-50 - 104
 			'margin-top': '-110px', //-50 - 60
 			}, 200, function() {
-				$("div#6").addClass("enlarge");
+				$("a#6").addClass("enlarge");
 			});
 		}
 		load1()
@@ -72,33 +72,31 @@ $(document).ready(function() {
 });
 
 function disappear(target) {
-	function dis(div) {
-		$(div).animate({
+	function dis(sel) {
+		$(sel).animate({
 			'height': '0',
 			'width': '0',
 			'margin-left': '0px',
 			'margin-top': '0px',
 		}, 100);
 	}
-	dis("div#1");
-	dis("div#2");
-	dis("div#3");
-	dis("div#4");
-	dis("div#5");
-	dis("div#6");
+	dis("a#1");
+	dis("a#2");
+	dis("a#3");
+	dis("a#4");
+	dis("a#5");
+	dis("a#6");
 	setTimeout(function() {
 		window.location = target
 	}, 500);
-
 }
-			
+
 </script>
 
-<div class="circle image hidden" id="1" style="background-image:url('../static/img/social_media/facebook.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://facebook.com/richzeng')"></div>
-<div class="circle image hidden" id="2" style="background-image:url('../static/img/social_media/googleplus.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://plus.google.com/105327081310360353311')"></div>
-<div class="circle image hidden" id="3" style="background-image:url('../static/img/social_media/linkedin.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://www.linkedin.com/in/richzeng/')"></div>
-<div class="circle image hidden" id="4" style="background-image:url('../static/img/social_media/email.png'); background-size: 100%; top:50%; left:50%;" onclick="window.location = 'mailto:richzeng@gmail.com'"></div>
-<div class="circle image hidden" id="5" style="background-image:url('../static/img/social_media/twitter.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://twitter.com/zengrichie')"></div>
-<div class="circle image hidden" id="6" style="background-image:url('../static/img/social_media/github.png'); background-size: 100%; top:50%; left:50%;" onclick="disappear('https://github.com/richzeng')"></div>
-
+<a class="circle image hidden" id="1" style="background-image:url('../static/img/social_media/facebook.png'); background-size: 100%; top:50%; left:50%;" href="https://facebook.com/richzeng" target="_blank" />
+<a class="circle image hidden" id="2" style="background-image:url('../static/img/social_media/googleplus.png'); background-size: 100%; top:50%; left:50%;" href="https://plus.google.com/105327081310360353311" target="_blank" />
+<a class="circle image hidden" id="3" style="background-image:url('../static/img/social_media/linkedin.png'); background-size: 100%; top:50%; left:50%;" href="https://www.linkedin.com/in/richzeng/" target="_blank" />
+<a class="circle image hidden" id="4" style="background-image:url('../static/img/social_media/email.png'); background-size: 100%; top:50%; left:50%;" href="mailto:richzeng@gmail.com" />
+<a class="circle image hidden" id="5" style="background-image:url('../static/img/social_media/twitter.png'); background-size: 100%; top:50%; left:50%;" href="https://twitter.com/zengrichie" target="_blank" />
+<a class="circle image hidden github" id="6" style="top:50%; left:50%;" href="https://github.com/richzeng" target="_blank" />
 {%endblock%}

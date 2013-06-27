@@ -1,0 +1,175 @@
+{%extends "base.html"%}
+
+{%block body%}
+<script>
+var isMoving = false;
+
+function polarToXY(rad, deg) {
+	var radians = deg/180 * (Math.PI);
+	var x = rad * Math.cos(radians);
+	var y = rad * Math.sin(radians);
+	return [x, y]
+}
+
+$(document).ready(function() {
+	active_id = 0
+    shiftDown(0);
+});
+
+$(document).keydown(function(e){
+	if (e.keyCode == 38 && !isMoving) { 
+		shiftUp();
+	}
+	else if (e.keyCode == 40 && !isMoving) {
+		shiftDown();
+	}
+});
+
+
+function loadSurroundings (id) {
+    var xy = polarToXY(200, 90);
+    xy[0] = xy[0] - 50;
+    xy[1] = xy[1] - 50;
+    $("div#"+id+".down").animate({
+        'height': '100px',
+        'width': '100px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 300);
+
+    xy = polarToXY(200, 270);
+    xy[0] = xy[0] - 50;
+    xy[1] = xy[1] - 50;
+    $("div#"+id+".up").animate({
+        'height': '100px',
+        'width': '100px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 300);
+
+    xy = polarToXY(300, 15);
+    xy[0] = xy[0] - 150;
+    xy[1] = xy[1] - 150;
+    $("div#s2").animate({
+        'height': '300px',
+        'width': '300px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 300);
+
+    xy = polarToXY(350, 155);
+    xy[0] = xy[0] - 200;
+    xy[1] = xy[1] - 200;
+    $("div#"+id+".desc").animate({
+        'height': '400px',
+        'width': '400px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 300, function() {
+        isMoving = false
+    });
+
+    xy = polarToXY(200, 220);
+    xy[0] = xy[0] - 75;
+    xy[1] = xy[1] - 75;
+    $("div#s4").animate({
+        'height': '150px',
+        'width': '150px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 300);
+
+    xy = polarToXY(300, 315);
+    xy[0] = xy[0] - 125;
+    xy[1] = xy[1] - 125;
+    $("div#s5").animate({
+        'height': '250px',
+        'width': '250px',
+        'margin-left': xy[0] + 'px',
+        'margin-top': xy[1] + 'px'
+    }, 300);
+}
+
+function removeSurroundings () {
+	$("div.surround").animate({
+		'height': '0',
+		'width': '0',
+		'margin-left': '0',
+		'margin-top': '0'
+	}, 200);
+}
+
+function loadCenter(id) {
+    console.log(id);
+	$("div#"+id+".center").animate({
+		'height': '200px',
+		'width': '200px',
+		'top': '50%',
+		'left': '50%',
+		'margin-left': '-100px',
+		'margin-top': '-100px'
+		}, 300);
+}
+
+function shiftUp() {
+	if (active_id > 1) {
+        isMoving = true;
+        removeSurroundings();
+        setTimeout(function() {
+            $("div#"+active_id+".center").animate({
+                'height': '0',
+                'width': '0',
+                'top': '0%',
+                'left': '50%',
+                'margin-left': '0',
+                'margin-top': '0'
+            }, 300);
+            active_id -= 1
+            loadCenter(active_id);
+        }, 200);
+        setTimeout(loadSurroundings, 400, active_id-1);
+	}
+}
+
+function shiftDown() {
+	if (active_id < 4) {
+        isMoving = true;
+        removeSurroundings();
+        setTimeout(function() {
+            $("div#"+active_id+".center").animate({
+                'height': '0',
+                'width': '0',
+                'top': '100%',
+                'left': '50%',
+                'margin-left': '0',
+                'margin-top': '0'
+                }, 300);
+            active_id += 1
+            loadCenter(active_id);
+        }, 200);
+        setTimeout(loadSurroundings, 400, active_id+1);
+	}
+}
+</script>
+
+{%for p in projects%}
+<div class="circle green hidden surround up" id="{{loop.index}}" style="top:50%; left:50%;" onclick="shiftUp()"></div>
+<div class="circle green hidden surround down" id="{{loop.index}}" style="top:50%; left:50%;" onclick="shiftDown()"></div>
+<div class="circle orange hidden surround desc" id="{{loop.index}}" style="top:50%; left:50%;">
+    <script type="text/javascript">circleWrapper(20, 190);</script>
+    <p></p>
+    <p>{{p.desc}}</p>
+    <p>Built with:</p>
+</div>
+<div class="circle blue hidden center" id="{{loop.index}}" style="top:0; left:50%;">
+    <div style="display:table; height:100%; width:100%; position: relative; overflow: hidden;">
+        <div style=" #position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+            <div style=" #position: relative; #top: -50%">
+                <h2 class="center">{{p.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{%endfor%}
+
+{%endblock%}

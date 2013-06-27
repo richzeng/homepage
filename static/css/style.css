@@ -23,9 +23,15 @@ div.hidden {
 	width: 0;
 }
 
+a.hidden {
+	height: 0;
+	width: 0;
+}
+
 p {
 	color: white;
-	font: 32px 'DroidSansRegular', Arial, sans-serif;
+	font: 18px 'DroidSansRegular', Arial, sans-serif;
+	line-height: 24px;
 }
 
 p.title  {
@@ -38,6 +44,7 @@ p.title  {
 	font-family: 'Merriweather Sans Bold', sans-serif;
 	font-size:100px;
 	opacity: 0.2;
+	line-height: normal;
 	margin-top: 650px;
 	text-shadow: 2px 2px 10px #000;
 }
@@ -58,6 +65,15 @@ p.title2 {
 
 h1 {
 	color: white;
+	font: 36px 'DroidSansBold', Arial, sans-serif;
+	margin: 0 0 5px 0;
+}
+
+h4 {
+	color: #AAA;
+	font: 18px 'DroidSans', Arial, sans-serif;
+	font-style: italic;
+	margin: 0 0 5px 0;
 }
 
 a:link {text-decoration:none;}
@@ -86,19 +102,31 @@ a:visited {text-decoration:none;}
 
 .circle h1 {
 	text-align: center;
-	font: 36px 'DroidSansBold', Arial, sans-serif;
 	padding-top: 6%;
 }
 
 .circle h1.center {
-	padding-top: 30%;
+	padding-top: 40%;
 	font: 28px 'DroidSansBold', Arial, sans-serif;
+}
+
+.circle .icon {
+	height:100px !important;
+	width:100px !important;
+}
+
+h2 {
+	color: white;
+	text-align: center;
+	font: 24px 'DroidSansBold', Arial, sans-serif;
+}
+
+h2.center {
+	text-align: center;
 }
 
 .circle p {
 	text-align: center;
-	font: 18px 'DroidSansRegular', Arial, sans-serif;
-	padding-top: 16px;
 }
 
 .image {
@@ -107,10 +135,16 @@ a:visited {text-decoration:none;}
 	border-color: #111;
 }
 
+.thumbnail {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-webkit-box-shadow: 5px 5px 10px #080808;
+}
+
 p strong {
 	font: 18px 'DroidSansBold', Arial, sans-serif;
 }
-
 
 .blue {
 	background-color: #007777;
@@ -124,6 +158,39 @@ p strong {
 .orange {
 	background-color: #C65A00;
 }
+.black {
+	background-color: #000;
+}
+
+.link {
+	background-image:url('../img/icons/link.png');
+	background-size: 100%;
+}
+.play {
+	background-image:url('../img/icons/play.png');
+	background-size: 100%;
+}
+.github {
+	background-image:url('../img/social_media/github.png');
+	background-size: 100%;
+}
+
+h2.nav {
+	color: #888;
+}
+
+h2.nav:hover {
+	cursor: pointer;
+	color: #CCC;
+}
+
+.selected {
+	color: #EEE !important;
+}
+
+.slide-container {
+	-webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
 
 .enlarge {
 	transition:0.25s;
@@ -134,6 +201,18 @@ p strong {
 
 .enlarge:hover {
 	-webkit-transform:scale(1.2, 1.2);
+	cursor: pointer;
+}
+
+.enlarge-slight {
+	transition:0.25s;
+	-webkit-transition:0.25s; /* Safari and Chrome */
+  -webkit-animation-timing-function: ease-out;
+	-webkit-user-select: none;
+}
+
+.enlarge-slight:hover {
+	-webkit-transform:scale(1.1, 1.1);
 	cursor: pointer;
 }
 
