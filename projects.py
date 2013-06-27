@@ -10,7 +10,7 @@ PROJECTS = [{
     "source": "https://github.com/DenerosArmy/Inventory",
     "link": "http://pandodaily.com/2013/01/21/the-worlds-largest-student-run-hackathon-isnt-at-stanford-or-mit-its-at-penn/",
     "demo": "http://youtu.be/cade1Uc5lDU",
-    "images": ["https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-prn1/739970_470768012980837_1360898042_o.jpg", "https://photos-5.dropbox.com/t/0/AAAz6xEWVjcj3t2VwiLhRY-p2qfOG1_uzrMk7Fv-Z8KfBw/12/1550239/jpeg/32x32/3/_/1/2/1363034750654.jpg/9tZUad32ihT2bgyvDlRdn9RwRFd1HP46CpUHsx_YoEw?size=1024x768", "http://i.imgur.com/ujPpGgsl.png"],
+    "images": ["https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-prn1/739970_470768012980837_1360898042_o.jpg", "http://i.imgur.com/vpcSDrY.jpg", "http://i.imgur.com/ujPpGgsl.png"],
     "desc": "A backpack that tells you what's inside of it. We put RFID stickers on our items and the backpack tracks them using an RFID sensor that communicates with an Android phone using bluetooth. The phone can then tell you what's in your bag, notify you when you forget something, and remind you to bring something based on contextual information like weather and location.",
     "prize": "First Place at PennApps Winter 2013"
     }, {
