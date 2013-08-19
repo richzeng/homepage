@@ -88,8 +88,10 @@ a:visited {text-decoration:none;}
 
 .circle {
 	position: absolute;
-	width: 10%; 
-	height: 10%; 
+	width: 200px;
+	height: 200px;
+	transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s;
 	-webkit-border-radius: 50%;
 	-webkit-box-shadow: 3px 3px 10px #000;
 }

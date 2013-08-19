@@ -3,99 +3,112 @@
 {%block body%}
 <script>
 $(document).ready(function() {
-	loadAbout = function () {
-		$("div.blue").animate({
-			'height': '200px',
-			'width': '200px',
-			'left': '50%',
-			'top': '50%',
-			'margin-left': '-210px',
-			'margin-top': '-210px'
-			}, 400, function() {
-				$("div.blue").addClass("ul");
-			});
-		}
-	loadBlog = function () {
-		$("div.orange").animate({
-			'height': '200px',
-			'width': '200px',
-			'right': '50%',
-			'top': '50%',
-			'margin-right': '-210px',
-			'margin-top': '-210px'
-			}, 400, function() {
-				$("div.orange").addClass("ur");
-			});
-		}
-	loadProjects= function () {
-		$("div.green").animate({
-			'height': '200px',
-			'width': '200px',
-			'left': '50%',
-			'bottom': '50%',
-			'margin-left': '-210px',
-			'margin-bottom': '-210px'
-			}, 400, function() {
-				$("div.green").addClass("bl");
-			});
-		}
-	loadContact = function () {
-		$("div.magenta").animate({
-			'height': '200px',
-			'width': '200px',
-			'right': '50%',
-			'bottom': '50%',
-			'margin-right': '-210px',
-			'margin-bottom': '-210px'
-			}, 400, function() {
-				$("div.magenta").addClass("br");
-			});
-		}
-		setTimeout(loadAbout, 100);
-		setTimeout(loadBlog, 200);
-		setTimeout(loadProjects, 300);
-		setTimeout(loadContact, 400);
+    d = $(window).height() * 0.3;
+    dpx = d + 'px';
+    margins = (-1 * d) - 10 + 'px';
+
+    function loadAbout() {
+        blue = $('div.blue');
+        blue.removeClass('hidden');
+        blue.height(dpx);
+        blue.width(dpx);
+        blue.css('left', '50%');
+        blue.css('top', '50%');
+        blue.css('margin-left', margins);
+        blue.css('margin-top', margins);
+        setTimeout(function() {
+            blue.addClass("ul");
+        }, 500);
+    }
+
+    function loadBlog() {
+        orange = $('div.orange');
+        orange.removeClass('hidden');
+        orange.height(dpx);
+        orange.width(dpx);
+        orange.css('right', '50%');
+        orange.css('top', '50%');
+        orange.css('margin-right', margins);
+        orange.css('margin-top', margins);
+        setTimeout(function() {
+            orange.addClass("ur");
+        }, 500);
+    }
+
+    function loadProjects() {
+        green = $('div.green');
+        green.removeClass('hidden');
+        green.height(dpx);
+        green.width(dpx);
+        green.css('left', '50%');
+        green.css('bottom', '50%');
+        green.css('margin-left', margins);
+        green.css('margin-bottom', margins);
+        setTimeout(function() {
+            green.addClass("bl");
+        }, 500);
+    }
+
+    function loadContact() {
+        magenta = $('div.magenta');
+        magenta.removeClass('hidden');
+        magenta.height(dpx);
+        magenta.width(dpx);
+        magenta.css('right', '50%');
+        magenta.css('bottom', '50%');
+        magenta.css('margin-right', margins);
+        magenta.css('margin-bottom', margins);
+        setTimeout(function() {
+            magenta.addClass("br");
+        }, 500);
+    }
+
+    setTimeout(loadAbout, 0);
+    setTimeout(loadBlog, 200);
+    setTimeout(loadProjects, 400);
+    setTimeout(loadContact, 600);
 });
 
 function flyAway(target) {
-	$(".ul").css('-webkit-transition', '0s');
-	$(".ur").css('-webkit-transition', '0s');
-	$(".bl").css('-webkit-transition', '0s');
-	$(".br").css('-webkit-transition', '0s');
-	flyAbout = function () {
-		$(".ul").animate({
-			'height': '0',
-			'width': '0',
-			'left': '-20%',
-			'top': '-20%'
-		}, 400);
-	};
-	flyBlog = function() {
-		$(".ur").animate({
-			'height': '0',
-			'width': '0',
-			'right': '-20%',
-			'top': '-20%'
-		}, 400);
-	}
-	flyProjects = function() {
-		$(".bl").animate({
-			'height': '0',
-			'width': '0',
-			'left': '-20%',
-			'bottom': '-20%'
-		}, 400);
-	}
-	flyContact = function() {
-		$(".br").animate({
-			'height': '0',
-			'width': '0',
-			'right': '-20%',
-			'bottom': '-20%'
-		}, 400, function() {
-			window.location = '/'+target;
-        });
-	};
+
+    function flyAbout() {
+        blue = $('div.blue');
+        blue.removeClass('ul');
+        blue.height('0');
+        blue.width('0');
+        blue.css('left', '0');
+        blue.css('top', '0');
+    }
+
+    function flyBlog() {
+        orange = $('div.orange');
+        orange.removeClass('ur');
+        orange.height('0');
+        orange.width('0');
+        orange.css('right', '0');
+        orange.css('top', '0');
+    }
+
+    function flyProjects() {
+        green = $('div.green');
+        green.removeClass('bl');
+        green.height('0');
+        green.width('0');
+        green.css('left', '0');
+        green.css('bottom', '0');
+    }
+
+    function flyContact() {
+        magenta = $('div.magenta');
+        magenta.removeClass('br');
+        magenta.height('0');
+        magenta.width('0');
+        magenta.css('right', '0');
+        magenta.css('bottom', '0');
+        setTimeout(function() {
+            window.location = '/'+target;
+        }, 500);
+    }
 
 	setTimeout(flyAbout, 100);
 	setTimeout(flyBlog, 200);
